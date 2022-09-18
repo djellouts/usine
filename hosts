@@ -1,0 +1,10 @@
+dev1 ansible_host=192.168.56.101 ansible_user=vagrant
+dev2 ansible_host=192.168.56.102 ansible_user=vagrant
+jenkins ansible_host=192.168.56.200 ansible_user=vagrant
+
+[dev]
+dev1
+dev2
+
+[ci]
+jenkins

@@ -1,0 +1,22 @@
+---
+- name: artifactory installed
+  hosts: ci
+  become: yes
+  tasks:
+  - name: artifactory repo added
+    get_url:
+      url: https://releases.jfrog.io/artifactory/artifactory-rpms/artifactory-rpms.repo
+      dest: /etc/yum.repos.d/jfrog-artifactory-rpms.repo
+
+  - name: artifactory installed
+    yum:
+      update_cache: yes
+      name: jfrog-artifactory-oss
+      state: present
+
+  - name: service artifactory started
+    systemd:
+      name: artifactory
+      state: started
+
+
